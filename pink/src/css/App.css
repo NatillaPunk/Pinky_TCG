@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./landing_page.css";
+@import "./main_menu.css";
 
 * {
     margin: 0;

@@ -1,26 +1,51 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 export default function Landing_page() {
-    function handleClick(index) {
-            let landingItems = document.querySelectorAll(".landing-item")
-            let slider = document.querySelector(".landing-list")
-        
+   const [navSize, setNavSize] = useState(100);
+   function handleClick(e){
+        const landingItems = Array.from(document.querySelectorAll(".landing-item"))
+        const clickedImage = e.currentTarget;
+        const sliderContainer = document.querySelector(".landing-list")
+        console.log(clickedImage)
 
-            console.log("Landing Items", landingItems[index]);
-            slider.prepend(landingItems[index])
+        const indexImage = landingItems.indexOf(clickedImage)
+        sliderContainer.prepend(landingItems[indexImage])
 
-            
+   }
+
+
+
+
+    useEffect(() => {
+    const slider = document.querySelector('.landing-list');
+
+    //Function to get and set size of nav
+    const navObj = document.getElementsByClassName('menu-container')[0];
+
+      if (navObj){
+        setNavSize(navObj.offsetTop)
+        console.log(navSize)
+      }
+
+
+    function activate(e) {
+      const items = document.querySelectorAll('.landing-item');
+      
+      if (e.target.matches('.next')) {
+        slider.append(items[0]);
+      }
+      if (e.target.matches('.prev')) {
+        slider.prepend(items[items.length - 1]);
+      }
     }
 
-    useEffect(()=>{
-        document.addEventListener('click', (e)=>{
-            
+    document.addEventListener('click', activate, false);
 
-            
-
-        })
-        
-    },[])
+    // Cleanup to avoid memory leaks
+    return () => {
+      document.removeEventListener('click', activate, false);
+    };
+  }, []); // ← run only once on mount
 
 
 
@@ -33,26 +58,26 @@ export default function Landing_page() {
         url: "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/10/magic-the-gathering-final-fantasy-kefka.jpg"
         },
         {
-        index: 1,
+        index: 2,
         title: "Amazing Title 2",
         description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias repellendus cupiditate molestiae mollitia ut commodi.",
         url: "https://mtgrocks.com/wp-content/uploads/2025/05/MTG-Final-Fantasy-Diamond-Weapon-Featured-Image.webp"
         },
          {
-        index: 2,
+        index: 1,
         title: "Amazing Title 3",
         description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias repellendus cupiditate molestiae mollitia ut commodi.",
-        url: "https://th.bing.com/th/id/R.c4b36df7562097407fd22646e37f0a56?rik=FU1CwSIAfZXDog&riu=http%3a%2f%2fwallpapercave.com%2fwp%2fP8XPAVk.jpg&ehk=Vy3nqmQv1yCwJx49ajP0nr1HZrgmh6nJUtPpaz2ILBA%3d&risl=&pid=ImgRaw&r=0"
+        url: "https://gizmodo.com/app/uploads/2024/10/magic-the-gathering-final-fantasy-tidus-yuna.jpg"
         }
     ]
 
     return (
     <>
     <section className="w-full h-screen flex flex-row items-center justify-center flex-wrap">        
-        <ul className="landing-list relative w-full h-full flex flex-row flex-wrap">
+        <ul className="landing-list relative w-full h-full flex flex-row flex-wrap" style={{top: `${navSize}px`}}>
             {gallery_data.map(({index,title,description,url})=>(
                <li key={index} 
-                className="landing-item z-0 flex w-full justify-center align-middle flex-wrap flex-row" onClick={()=>{handleClick(index)}}>
+                className="landing-item z-0 flex w-full justify-center align-middle flex-wrap flex-row" onClick={(e)=>{handleClick(e)}}>
                 
                 <div className="landing-text flex w-3/6 text-white justify-center align-middle flex-wrap flex-row absolute left-11 bottom-3/12">
                     <h1 className="w-full">{title}</h1>
@@ -71,8 +96,11 @@ export default function Landing_page() {
             </li> */}
             
         </ul>
-
-       
+                
+       <nav className="nav">
+          <ion-icon className="btn prev" name="arrow-back-outline" />
+          <ion-icon className="btn next" name="arrow-forward-outline" />
+        </nav>
     </section>
     
     </>

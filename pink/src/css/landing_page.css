@@ -1,0 +1,31 @@
+
+
+.landing-item:nth-child(n+2){
+position: absolute;
+width: 15vw;
+height: 50vh;
+z-index: 10;
+bottom: 25%;
+
+}
+
+.landing-item:nth-child(n+2){
+right: calc(20rem);
+}
+.landing-item:nth-child(n+2):hover{
+cursor: pointer;
+}
+.landing-item:nth-child(3){
+right: 0;
+}
+
+
+.landing-item:nth-child(n+2) .landing-text{
+    display: none;
+}
+
+
+
+.landing-image{
+   width: 100%; 
+}

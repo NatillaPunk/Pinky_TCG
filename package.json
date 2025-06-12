@@ -1,0 +1,19 @@
+{
+  "name": "pinky_tcg",
+  "version": "1.0.0",
+  "description": "Official Website of Pinky_TCG",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NatillaPunk/Pinky_TCG.git"
+  },
+  "author": "Darrell Melendez Quiros",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NatillaPunk/Pinky_TCG/issues"
+  },
+  "homepage": "https://github.com/NatillaPunk/Pinky_TCG#readme"
+}

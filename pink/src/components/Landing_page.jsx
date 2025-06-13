@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react"
 
+// Creation of Dynamic Landing page 
 export default function Landing_page() {
-   const [navSize, setNavSize] = useState(100);
-   function handleClick(e){
+   const [navSize, setNavSize] = useState(0); //Works to set correct position of Landing_Page
+
+
+   // Sets functionality to handle click (Changes Images of gallery based in selection)
+   function changeImageOnClick(e){
         const landingItems = Array.from(document.querySelectorAll(".landing-item"))
         const clickedImage = e.currentTarget;
         const sliderContainer = document.querySelector(".landing-list")
@@ -20,12 +24,13 @@ export default function Landing_page() {
     const slider = document.querySelector('.landing-list');
 
     //Function to get and set size of nav
-    const navObj = document.getElementsByClassName('menu-container')[0];
+    // const navObj = document.getElementsByClassName('menu-container')[0];
 
-      if (navObj){
-        setNavSize(navObj.offsetTop)
-        console.log(navSize)
-      }
+    //   if (navObj){
+    //     setNavSize()
+
+    //     console.log("Nav Obj",navSize)
+    //   }
 
 
     function activate(e) {
@@ -46,6 +51,37 @@ export default function Landing_page() {
       document.removeEventListener('click', activate, false);
     };
   }, []); // ← run only once on mount
+
+
+
+  // Nav Menu Creation
+ function NavMenu(){
+
+    useEffect(()=>{
+      const navObj = document.getElementsByClassName('menu-container')[0];
+      setNavSize(navObj.offsetHeight); 
+      console.log(navSize)
+    })
+
+    return(
+        <>
+            <nav className="menu-container flex flex-row flex-wrap justify-around w-full h-17 fixed z-50 text-center items-center bg-amber-50 " >
+                <i className="text-center">Menu</i>
+                <input className="flex  text-center resize-none items-center " placeholder="Search"   name="" id=""></input>
+
+                
+                <ul className=" flex flex-row justify-around gap-3 ">
+                    <li className=""><a href="">Option 1</a></li>
+                    <li><a className="text-center" href="">Option 2</a></li>
+                    <li><a href="">Option 3</a></li>
+                    <li><a href="">Option 4</a></li>
+                </ul>
+            </nav>
+        </>
+    )
+
+  }
+  
 
 
 
@@ -73,11 +109,12 @@ export default function Landing_page() {
 
     return (
     <>
+    <NavMenu />
     <section className="w-full h-screen flex flex-row items-center justify-center flex-wrap">        
         <ul className="landing-list relative w-full h-full flex flex-row flex-wrap" style={{top: `${navSize}px`}}>
             {gallery_data.map(({index,title,description,url})=>(
                <li key={index} 
-                className="landing-item z-0 flex w-full justify-center align-middle flex-wrap flex-row" onClick={(e)=>{handleClick(e)}}>
+                className="landing-item z-0 flex w-full justify-center align-middle flex-wrap flex-row" onClick={(e)=>{changeImageOnClick(e)}}>
                 
                 <div className="landing-text flex w-3/6 text-white justify-center align-middle flex-wrap flex-row absolute left-11 bottom-3/12">
                     <h1 className="w-full">{title}</h1>
@@ -105,4 +142,11 @@ export default function Landing_page() {
     
     </>
     )
+
+
+
+
+    
+
 }
+

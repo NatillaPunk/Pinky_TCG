@@ -60,12 +60,11 @@ export default function Landing_page() {
     useEffect(()=>{
       const navObj = document.getElementsByClassName('menu-container')[0];
       setNavSize(navObj.offsetHeight); 
-      console.log(navSize)
     })
 
     return(
         <>
-            <nav className="menu-container flex flex-row flex-wrap justify-around w-full h-17 fixed z-50 text-center items-center bg-amber-50 " >
+            <nav className="menu-container fixed flex flex-row flex-wrap justify-around w-full h-17  z-50 text-center items-center bg-amber-50 " >
                 <i className="text-center">Menu</i>
                 <input className="flex  text-center resize-none items-center " placeholder="Search"   name="" id=""></input>
 
@@ -109,9 +108,11 @@ export default function Landing_page() {
 
     return (
     <>
-    <NavMenu />
-    <section className="w-full h-screen flex flex-row items-center justify-center flex-wrap">        
-        <ul className="landing-list relative w-full h-full flex flex-row flex-wrap" style={{top: `${navSize}px`}}>
+    <NavMenu />  
+    <section className="w-full h-screen flex flex-row  justify-center flex-wrap"  style={{ marginTop: `${navSize}px`}}>   
+         
+      {/* style={{top: `${navSize}px`}} */}
+        <ul className="landing-list relative w-full flex flex-row flex-wrap" style={{height: `calc(100% - ${navSize}px)`}}>
             {gallery_data.map(({index,title,description,url})=>(
                <li key={index} 
                 className="landing-item z-0 flex w-full justify-center align-middle flex-wrap flex-row" onClick={(e)=>{changeImageOnClick(e)}}>
@@ -120,7 +121,7 @@ export default function Landing_page() {
                     <h1 className="w-full">{title}</h1>
                     <p className="w-full">{description}</p>
                 </div>
-                <div className="landing-image basis-full bg-cover bg-center " style={{ backgroundImage: `url(${url})` }}></div>
+                <div className="landing-image basis-full bg-cover bg-no-repeat bg-center " style={{ backgroundImage: `url(${url})` }}></div>
                 </li>
             ))}
 

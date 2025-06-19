@@ -137,7 +137,7 @@ export default function Carrousel_Product_Linear (){
             <div className="w-full h-10 flex flex-row">
                 <h1 className="">Trending</h1>
             </div>
-            <div ref={Carousel_container_ref} className="carousel_product_container  gap-32 w-screen h-fit flex flex-row overflow-x-scroll scroll-smooth">
+            <div ref={Carousel_container_ref} className="carousel_product_container   gap-32 w-full h-fit flex flex-row items-center justify-center   overflow-x-scroll">
             
             {
                 listProducts.map(({id,url})=>(

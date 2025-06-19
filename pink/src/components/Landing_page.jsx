@@ -64,7 +64,7 @@ export default function Landing_page() {
 
     return(
         <>
-            <nav className="menu-container fixed flex flex-row flex-wrap justify-around w-full h-17  z-50 text-center items-center bg-amber-50 " >
+            <nav className="menu-container fixed flex flex-row flex-wrap justify-around w-full h-17 m-0 z-50 text-center items-center bg-amber-50 " >
                 <i className="text-center">Menu</i>
                 <input className="flex  text-center resize-none items-center " placeholder="Search"   name="" id=""></input>
 

@@ -128,9 +128,8 @@ const listProducts = [
     url: "https://cardkingdom.imgix.net/final-fantasy-313622?ixlib=php-3.3.1&auto=format&q=35&fit=clip&usm=15&sharp=30&usmrad=1&width=297&blend-w=297",
   },
 ];
-const HigherPriceProducts = listProducts
-  .sort((a, b) => b.price - a.price)
-  .slice(0, 4);
+const HigherPriceProducts = listProducts.sort((a, b) => b.price - a.price).slice(0, 4);
+const LowerPriceProducts = listProducts.sort((a, b) => a.price - b.price).slice(0, 4);
 console.log(HigherPriceProducts);
 
 export default function Product_Information() {
@@ -196,8 +195,15 @@ function Purchase_Trends() {
 function Price_Trends() {
   return (
     <>
-      <div className="w-1/2 h-fit">
+      <div className="w-1/2 h-fit flex flex-col justify-center items-center">
         <h1>Price Increase</h1>
+        <div className="w-3/4 h-fit flex flex-col justify-center items-center">
+          {LowerPriceProducts.map(({ id, url, price }) => (
+            
+              <div key={id} className="w-full grid grid-cols-2 *:" ><span>{id}</span><span>{price}</span></div>
+            
+          ))}
+        </div>
       </div>
     </>
   );

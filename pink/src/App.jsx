@@ -15,8 +15,8 @@ function App() {
       {/* <NavMenu /> */}
       <Landing_page />
       
-      <section className="w-full h-screen flex flex-row items-center justify-center flex-wrap "> 
-        <div className='w-11/12  flex flex-row flex-wrap justify-center align-middle'>
+      <section className="w-11/12 h-screen flex flex-row items-center justify-center flex-wrap "> 
+        <div className='w-full flex flex-row flex-wrap justify-center items-center bg-amber-300'>
           <Carrousel_Product_Linear/>
         </div>       
       </section>

@@ -128,8 +128,12 @@ const listProducts = [
     url: "https://cardkingdom.imgix.net/final-fantasy-313622?ixlib=php-3.3.1&auto=format&q=35&fit=clip&usm=15&sharp=30&usmrad=1&width=297&blend-w=297",
   },
 ];
-const HigherPriceProducts = listProducts.sort((a, b) => b.price - a.price).slice(0, 4);
-const LowerPriceProducts = listProducts.sort((a, b) => a.price - b.price).slice(0, 4);
+const HigherPriceProducts = listProducts
+  .sort((a, b) => b.price - a.price)
+  .slice(0, 4);
+const LowerPriceProducts = listProducts
+  .sort((a, b) => a.price - b.price)
+  .slice(0, 4);
 console.log(HigherPriceProducts);
 
 export default function Product_Information() {
@@ -168,15 +172,15 @@ function Purchase_Trends() {
             </div>
           </div> */}
 
-      <div className="w-1/2 flex flex-col">
+      <div className="w-1/2 h-fit flex flex-col">
         <div className="w-full text-center flex-col align-middle justify-center">
           Purchase Trends
         </div>
-        <div className="w-full grid grid-cols-2">
+        <div className="w-full h-full grid grid-cols-2">
           {HigherPriceProducts.map(({ id, url, price }) => (
             <div key={id} className="card-container col-span-1">
               <div
-                className="card-image-holder h-[200px] bg-contain bg-center bg-no-repeat"
+                className="card-image-holder h-full w-full bg-contain bg-center bg-no-repeat"
                 style={{ backgroundImage: `url(${url})` }}
               ></div>
               <div className="flex flex-col items-center justify-center">
@@ -199,9 +203,10 @@ function Price_Trends() {
         <h1>Price Increase</h1>
         <div className="w-3/4 h-fit flex flex-col justify-center items-center">
           {LowerPriceProducts.map(({ id, url, price }) => (
-            
-              <div key={id} className="w-full grid grid-cols-2 *:" ><span>{id}</span><span>{price}</span></div>
-            
+            <div key={id} className="w-full grid grid-cols-2 *:">
+              <span>{id}</span>
+              <span>{price}</span>
+            </div>
           ))}
         </div>
       </div>

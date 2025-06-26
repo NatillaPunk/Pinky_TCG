@@ -137,16 +137,16 @@ export default function Carrousel_Product_Linear (){
             <div className="w-full h-10 flex flex-row">
                 <h1 className="">Trending</h1>
             </div>
-            <div ref={Carousel_container_ref} className="carousel_product_container   gap-32 w-full h-fit flex flex-row items-center justify-center   overflow-x-scroll">
+            <div ref={Carousel_container_ref} className="carousel_product_container   gap-20 w-full h-fit flex flex-row items-center justify-start  overflow-x-scroll ">
             
             {
                 listProducts.map(({id,url})=>(
                     
-                    <li key={id} className="product_holder h-fit flex flew-row flex-wrap ">
+                    <li key={id} className="product_holder  flex flew-row flex-wrap ">
                         
-                        <div className="product_image h-[300px] w-[210px] bg-contain bg-no-repeat bg-center" style={{backgroundImage: `url(${url})`}}></div>
+                        <div className="product_image h-60 w-full bg-contain bg-no-repeat bg-center" style={{backgroundImage: `url(${url})`}}></div>
                         
-                        <div className="product_information w-full">
+                        <div className="product_information">
                             <h4>Product_title</h4>
                             <h5>Product_expansion</h5>
                             <span>Product_Price</span>
